@@ -442,8 +442,8 @@ function App() {
         {activeTab === 'resources' && (
           <div className="max-w-6xl mx-auto space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Mental Health Resources</h2>
-              <p className="text-gray-600">Evidence-based information and tools to support your mental wellness journey</p>
+              <h2 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">Mental Health Resources</h2>
+              <p className="text-white/80 drop-shadow-md">Evidence-based information and tools to support your mental wellness journey</p>
             </div>
 
             {/* Category Filter */}
@@ -454,8 +454,8 @@ function App() {
                   onClick={() => handleCategoryChange(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedCategory === category
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'glass-effect text-white'
+                      : 'glass-pill text-white/70 hover:text-white'
                   }`}
                 >
                   {category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ')}
@@ -466,18 +466,18 @@ function App() {
             {/* Resources Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {resources.map((resource, index) => (
-                <div key={resource.id} className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+                <div key={resource.id} className="resource-card-glass rounded-lg p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                    <span className="inline-block glass-pill text-white/90 text-xs px-2 py-1 rounded-full">
                       {resource.category.replace('-', ' ')}
                     </span>
                   </div>
                   
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{resource.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{resource.description}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-md">{resource.title}</h3>
+                  <p className="text-white/80 text-sm mb-4">{resource.description}</p>
                   
-                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                    <p className="text-sm text-gray-700 leading-relaxed">
+                  <div className="glass-pill rounded-lg p-4 mb-4">
+                    <p className="text-sm text-white/90 leading-relaxed">
                       {resource.content.length > 200 
                         ? `${resource.content.substring(0, 200)}...` 
                         : resource.content
@@ -490,11 +490,11 @@ function App() {
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+                      className="inline-flex items-center text-white hover:text-white/80 text-sm font-medium"
                     >
                       Learn More
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
                   )}
