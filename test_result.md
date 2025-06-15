@@ -137,15 +137,18 @@ backend:
         
   - task: "Mental Health Resources API"
     implemented: true
-    working: "testing_needed"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "testing_needed"
         agent: "main"
         comment: "Implemented resource CRUD with categories, seeded with sample mental health resources"
+      - working: true
+        agent: "testing"
+        comment: "Successfully tested resource retrieval overall and by category. Sample resources are properly seeded with the expected categories (anxiety, coping-strategies, mindfulness, professional-help). Creating new resources works correctly with proper data persistence."
         
   - task: "Crisis Support Information API"
     implemented: true
