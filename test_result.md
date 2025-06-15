@@ -223,11 +223,9 @@ metadata:
 test_plan:
   current_focus:
     - "AI Mental Health Companion Chat API"
-    - "Mood Tracking API"
-    - "Mental Health Resources API"
-    - "Crisis Support Information API"
-  stuck_tasks: []
-  test_all: true
+  stuck_tasks:
+    - "AI Mental Health Companion Chat API"
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:
