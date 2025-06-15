@@ -511,36 +511,36 @@ function App() {
               <img 
                 src="https://images.unsplash.com/photo-1465321897912-c692b37a09a6" 
                 alt="Person by peaceful water"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg"
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg border-4 border-white/30"
               />
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Crisis Support</h2>
-              <p className="text-gray-600">Immediate help is available. You are not alone.</p>
+              <h2 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">Crisis Support</h2>
+              <p className="text-white/80 drop-shadow-md">Immediate help is available. You are not alone.</p>
             </div>
 
             {/* Emergency Notice */}
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            <div className="crisis-warning-glass rounded-lg p-6">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-red-500/80 rounded-full flex items-center justify-center backdrop-blur-md">
                   <span className="text-white font-bold">!</span>
                 </div>
-                <h3 className="text-lg font-semibold text-red-800">If you're in immediate danger</h3>
+                <h3 className="text-lg font-semibold text-white drop-shadow-lg">If you're in immediate danger</h3>
               </div>
-              <p className="text-red-700 mb-4">
+              <p className="text-white/90 mb-4 drop-shadow-md">
                 If you are having thoughts of hurting yourself or others, please reach out for help immediately.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="tel:911" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                <a href="tel:911" className="glass-button px-6 py-3 rounded-lg font-medium">
                   Call 911
                 </a>
-                <a href="tel:988" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                <a href="tel:988" className="glass-button px-6 py-3 rounded-lg font-medium">
                   Call 988 (Suicide Prevention)
                 </a>
               </div>
             </div>
 
             {/* Emergency Contacts */}
-            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <h3 className="text-xl font-semibold mb-4">24/7 Crisis Helplines</h3>
+            <div className="glass-container p-6">
+              <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-lg">24/7 Crisis Helplines</h3>
               <div className="space-y-4">
                 {[
                   {
@@ -564,15 +564,15 @@ function App() {
                     description: "24/7 confidential support for domestic violence survivors"
                   }
                 ].map((contact, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg p-4">
+                  <div key={index} className="glass-pill rounded-lg p-4">
                     <div className="flex justify-between items-start">
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">{contact.name}</h4>
-                        <p className="text-sm text-gray-600 mt-1">{contact.description}</p>
+                        <h4 className="font-semibold text-white drop-shadow-md">{contact.name}</h4>
+                        <p className="text-sm text-white/80 mt-1">{contact.description}</p>
                       </div>
                       <a
                         href={`tel:${contact.phone.replace(/[^\d]/g, '')}`}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium ml-4 transition-colors"
+                        className="glass-button px-4 py-2 rounded-lg text-sm font-medium ml-4"
                       >
                         {contact.phone}
                       </a>
@@ -583,8 +583,8 @@ function App() {
             </div>
 
             {/* Immediate Coping Strategies */}
-            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <h3 className="text-xl font-semibold mb-4">Immediate Coping Strategies</h3>
+            <div className="glass-container p-6">
+              <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-lg">Immediate Coping Strategies</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   {
@@ -612,17 +612,17 @@ function App() {
                     description: "Journal your thoughts and feelings to help process them"
                   }
                 ].map((strategy, index) => (
-                  <div key={index} className="bg-blue-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-blue-900 mb-2">{strategy.title}</h4>
-                    <p className="text-blue-800 text-sm">{strategy.description}</p>
+                  <div key={index} className="glass-pill rounded-lg p-4">
+                    <h4 className="font-semibold text-white mb-2 drop-shadow-md">{strategy.title}</h4>
+                    <p className="text-white/80 text-sm">{strategy.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="text-center bg-green-50 rounded-lg p-6 border border-green-200">
-              <h3 className="text-lg font-semibold text-green-900 mb-2">Remember</h3>
-              <p className="text-green-800">
+            <div className="text-center glass-container rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">Remember</h3>
+              <p className="text-white/90 drop-shadow-md">
                 You are valuable, you matter, and help is available. These difficult feelings will pass. 
                 Reaching out for support is a sign of strength, not weakness.
               </p>
