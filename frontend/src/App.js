@@ -253,15 +253,15 @@ function App() {
         {/* Chat Tab */}
         {activeTab === 'chat' && (
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-md border border-gray-200 h-96 flex flex-col">
+            <div className="glass-container h-96 flex flex-col">
               <div className="flex-1 p-4 overflow-y-auto space-y-4">
                 {chatMessages.length === 0 && (
                   <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 glass-effect rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-white text-2xl">💬</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Welcome to MindWell</h3>
-                    <p className="text-gray-600 mb-4">
+                    <h3 className="text-lg font-semibold text-white mb-2 drop-shadow-lg">Welcome to Wandile MindWell</h3>
+                    <p className="text-white/80 mb-4 drop-shadow-md">
                       I'm here to provide support, coping strategies, and a listening ear. How are you feeling today?
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
@@ -274,7 +274,7 @@ function App() {
                         <button
                           key={index}
                           onClick={() => setInputMessage(suggestion)}
-                          className="p-3 text-left bg-blue-50 hover:bg-blue-100 rounded-lg text-sm text-blue-700 transition-colors"
+                          className="p-3 text-left glass-button rounded-lg text-sm text-white transition-all"
                         >
                           {suggestion}
                         </button>
@@ -291,14 +291,12 @@ function App() {
                     <div
                       className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                         message.type === 'user'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 text-gray-900'
+                          ? 'chat-message-user'
+                          : 'chat-message-ai'
                       }`}
                     >
-                      <p className="whitespace-pre-wrap">{message.content}</p>
-                      <p className={`text-xs mt-1 ${
-                        message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
-                      }`}>
+                      <p className="whitespace-pre-wrap text-white">{message.content}</p>
+                      <p className="text-xs mt-1 text-white/60">
                         {new Date(message.timestamp).toLocaleTimeString()}
                       </p>
                     </div>
@@ -307,11 +305,11 @@ function App() {
                 
                 {isLoading && (
                   <div className="flex justify-start">
-                    <div className="bg-gray-100 px-4 py-2 rounded-lg">
+                    <div className="loading-glass px-4 py-2 rounded-lg">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                        <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                       </div>
                     </div>
                   </div>
@@ -319,7 +317,7 @@ function App() {
                 <div ref={chatEndRef} />
               </div>
               
-              <div className="border-t border-gray-200 p-4">
+              <div className="border-t border-white/20 p-4">
                 <div className="flex space-x-2">
                   <input
                     type="text"
@@ -328,17 +326,17 @@ function App() {
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Share what's on your mind..."
                     disabled={isLoading}
-                    className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                    className="flex-1 glass-input rounded-lg px-4 py-2 disabled:opacity-50"
                   />
                   <button
                     onClick={sendMessage}
                     disabled={isLoading || !inputMessage.trim()}
-                    className="bg-blue-500 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                    className="glass-button disabled:opacity-50 disabled:cursor-not-allowed px-6 py-2 rounded-lg font-medium"
                   >
                     Send
                   </button>
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-white/60 mt-2 drop-shadow-md">
                   Remember: This is for support and guidance. In crisis situations, please contact emergency services.
                 </p>
               </div>
