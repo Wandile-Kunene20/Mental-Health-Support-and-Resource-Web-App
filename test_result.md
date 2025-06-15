@@ -232,4 +232,8 @@ agent_communication:
   - agent: "main"
     message: "Initial implementation complete. Mental health web app with AI companion (GPT-4o), mood tracking, resource library, and crisis support. Backend uses emergentintegrations library for OpenAI integration. All APIs implemented with MongoDB persistence. Ready for backend testing."
   - agent: "testing"
+    message: "Backend testing completed. Mood tracking, resources, and crisis support APIs working perfectly. AI Chat API technically sound but OpenAI API key has exceeded quota - getting RateLimitError from OpenAI servers."
+  - agent: "main"  
+    message: "OpenAI API key quota exceeded. Technical implementation is correct. User needs to check OpenAI billing/quota or provide new API key with available credits."
+  - agent: "testing"
     message: "Backend testing completed. Three APIs (Mood Tracking, Mental Health Resources, Crisis Support) are working correctly. The AI Mental Health Companion Chat API is failing with an OpenAI authentication error. The OPENAI_API_KEY is defined in backend/.env but not being properly loaded in the supervisor environment. This needs to be fixed for the core chat functionality to work."
