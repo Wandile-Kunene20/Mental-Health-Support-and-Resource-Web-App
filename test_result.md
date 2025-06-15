@@ -152,15 +152,18 @@ backend:
         
   - task: "Crisis Support Information API"
     implemented: true
-    working: "testing_needed"  
+    working: true  
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "testing_needed"
         agent: "main"
         comment: "Implemented static crisis resources endpoint with emergency contacts and coping strategies"
+      - working: true
+        agent: "testing"
+        comment: "Successfully tested crisis support information retrieval. API returns the expected emergency contacts (National Suicide Prevention Lifeline, Crisis Text Line, SAMHSA National Helpline) and immediate steps for crisis situations. Data structure is appropriate and contains all required information."
 
 frontend:
   - task: "AI Chat Interface"
