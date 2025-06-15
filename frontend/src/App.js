@@ -176,8 +176,8 @@ function App() {
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <span className="text-sm text-gray-600">24/7 Support Available</span>
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm text-white/80 drop-shadow-md">24/7 Support Available</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
             </div>
           </div>
         </div>
