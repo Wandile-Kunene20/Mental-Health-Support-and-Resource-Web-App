@@ -188,32 +188,31 @@ function App() {
 
       {/* Hero Section */}
       {activeTab === 'chat' && chatMessages.length === 0 && (
-        <div className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 py-16">
-          <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative py-16">
           <div className="relative max-w-4xl mx-auto px-4 text-center">
             <img 
               src="https://images.unsplash.com/photo-1464618663641-bbdd760ae84a" 
               alt="Peaceful mountain landscape"
-              className="absolute inset-0 w-full h-full object-cover opacity-30 rounded-lg"
+              className="absolute inset-0 w-full h-full object-cover opacity-20 rounded-2xl"
             />
-            <div className="relative z-10 bg-white bg-opacity-90 rounded-lg p-8 backdrop-blur-sm">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="relative z-10 glass-card backdrop-blur-lg rounded-2xl p-8">
+              <h2 className="text-4xl font-bold text-white mb-4 drop-shadow-lg">
                 You're Not Alone in This Journey
               </h2>
-              <p className="text-xl text-gray-700 mb-6">
-                Start a conversation with MindWell, your compassionate AI companion for mental health support
+              <p className="text-xl text-white/90 mb-6 drop-shadow-md">
+                Start a conversation with your compassionate AI companion for mental health support
               </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
-                <span className="flex items-center">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-white/80">
+                <span className="flex items-center glass-pill px-4 py-2 rounded-full backdrop-blur-sm">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                   24/7 Available
                 </span>
-                <span className="flex items-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                <span className="flex items-center glass-pill px-4 py-2 rounded-full backdrop-blur-sm">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
                   Confidential & Safe
                 </span>
-                <span className="flex items-center">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
+                <span className="flex items-center glass-pill px-4 py-2 rounded-full backdrop-blur-sm">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-2"></div>
                   Evidence-Based Support
                 </span>
               </div>
