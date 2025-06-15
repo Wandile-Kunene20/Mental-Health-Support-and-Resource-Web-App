@@ -630,19 +630,19 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+      <footer className="footer-glass border-t border-white/20 mt-16">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">M</span>
+              <div className="w-8 h-8 glass-effect rounded-full flex items-center justify-center">
+                <span className="text-white font-bold">W</span>
               </div>
-              <span className="text-lg font-semibold text-gray-900">MindWell</span>
+              <span className="text-lg font-semibold text-white drop-shadow-lg">Wandile MindWell</span>
             </div>
-            <p className="text-gray-600 text-sm mb-4">
-              Your mental health companion - providing support, resources, and hope.
+            <p className="text-white/80 text-sm mb-4 drop-shadow-md">
+              Mental Health Support and Resources - providing support, resources, and hope.
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-white/60 drop-shadow-sm">
               This app provides general mental health information and support. It is not a substitute for professional medical advice, diagnosis, or treatment.
             </p>
           </div>
