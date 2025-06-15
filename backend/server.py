@@ -3,11 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 import uuid
 from datetime import datetime, timezone
 import asyncio
 from emergentintegrations.llm.chat import LlmChat, UserMessage
+
+# Load environment variables
+load_dotenv()
 
 # Initialize FastAPI app
 app = FastAPI(title="Mental Health Resource API")
