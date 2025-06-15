@@ -167,12 +167,12 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+              <div className="w-12 h-12 glass-effect rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-lg">W</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">MindWell</h1>
-                <p className="text-sm text-gray-600">Your Mental Health Companion</p>
+                <h1 className="text-2xl font-bold text-white drop-shadow-lg">Wandile MindWell</h1>
+                <p className="text-sm text-white/80 drop-shadow-md">Mental Health Support and Resources</p>
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-4">
