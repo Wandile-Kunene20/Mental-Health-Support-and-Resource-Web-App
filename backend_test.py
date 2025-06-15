@@ -40,55 +40,83 @@ class MentalHealthAPITest(unittest.TestCase):
     
     def test_ai_chat_api(self):
         """Test the AI Mental Health Companion Chat API"""
-        # Test with a new session
-        payload = {
-            "message": "I've been feeling anxious lately and having trouble sleeping."
-        }
-        response = requests.post(f"{API_BASE_URL}/chat", json=payload)
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertIn("response", data)
-        self.assertIn("session_id", data)
-        self.assertTrue(len(data["response"]) > 0)
-        session_id = data["session_id"]
-        print("✅ AI Chat API initial message test passed")
-        
-        # Test with the same session ID for conversation continuity
-        follow_up_payload = {
-            "message": "What are some techniques I can use to manage my anxiety?",
-            "session_id": session_id
-        }
-        response = requests.post(f"{API_BASE_URL}/chat", json=follow_up_payload)
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertEqual(data["session_id"], session_id)
-        self.assertTrue(len(data["response"]) > 0)
-        print("✅ AI Chat API follow-up message test passed")
-        
-        # Test chat history retrieval
-        response = requests.get(f"{API_BASE_URL}/chat/history/{session_id}")
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertIn("conversations", data)
-        conversations = data["conversations"]
-        self.assertTrue(len(conversations) >= 2)  # Should have at least our two messages
-        self.assertEqual(conversations[0]["user_message"], payload["message"])
-        self.assertEqual(conversations[1]["user_message"], follow_up_payload["message"])
-        print("✅ Chat history retrieval test passed")
-        
-        # Test with a mental health crisis message
-        crisis_payload = {
-            "message": "I'm feeling really down and sometimes think about hurting myself.",
-            "session_id": session_id
-        }
-        response = requests.post(f"{API_BASE_URL}/chat", json=crisis_payload)
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        crisis_response = data["response"].lower()
-        # Check if the response contains crisis-appropriate content
-        crisis_keywords = ["professional", "help", "support", "emergency", "crisis", "resources"]
-        self.assertTrue(any(keyword in crisis_response for keyword in crisis_keywords))
-        print("✅ AI Chat API crisis message handling test passed")
+        try:
+            # Test with a new session
+            payload = {
+                "message": "I've been feeling anxious lately and having trouble sleeping."
+            }
+            response = requests.post(f"{API_BASE_URL}/chat", json=payload)
+            
+            # Check if the API is working
+            if response.status_code == 200:
+                data = response.json()
+                self.assertIn("response", data)
+                self.assertIn("session_id", data)
+                self.assertTrue(len(data["response"]) > 0)
+                session_id = data["session_id"]
+                print("✅ AI Chat API initial message test passed")
+                
+                # Test with the same session ID for conversation continuity
+                follow_up_payload = {
+                    "message": "What are some techniques I can use to manage my anxiety?",
+                    "session_id": session_id
+                }
+                response = requests.post(f"{API_BASE_URL}/chat", json=follow_up_payload)
+                self.assertEqual(response.status_code, 200)
+                data = response.json()
+                self.assertEqual(data["session_id"], session_id)
+                self.assertTrue(len(data["response"]) > 0)
+                print("✅ AI Chat API follow-up message test passed")
+                
+                # Test chat history retrieval
+                response = requests.get(f"{API_BASE_URL}/chat/history/{session_id}")
+                self.assertEqual(response.status_code, 200)
+                data = response.json()
+                self.assertIn("conversations", data)
+                conversations = data["conversations"]
+                self.assertTrue(len(conversations) >= 2)  # Should have at least our two messages
+                self.assertEqual(conversations[0]["user_message"], payload["message"])
+                self.assertEqual(conversations[1]["user_message"], follow_up_payload["message"])
+                print("✅ Chat history retrieval test passed")
+                
+                # Test with a mental health crisis message
+                crisis_payload = {
+                    "message": "I'm feeling really down and sometimes think about hurting myself.",
+                    "session_id": session_id
+                }
+                response = requests.post(f"{API_BASE_URL}/chat", json=crisis_payload)
+                self.assertEqual(response.status_code, 200)
+                data = response.json()
+                crisis_response = data["response"].lower()
+                # Check if the response contains crisis-appropriate content
+                crisis_keywords = ["professional", "help", "support", "emergency", "crisis", "resources"]
+                self.assertTrue(any(keyword in crisis_response for keyword in crisis_keywords))
+                print("✅ AI Chat API crisis message handling test passed")
+            else:
+                # If the API returns an error, check the response for more information
+                print(f"❌ AI Chat API test failed with status code: {response.status_code}")
+                print(f"Response: {response.text}")
+                
+                # Check if we can get more information about the error
+                if response.status_code == 500:
+                    print("The AI Chat API is returning a 500 Internal Server Error.")
+                    print("This is likely due to an issue with the emergentintegrations library.")
+                    print("The library may not be properly installed in the supervisor environment.")
+                    
+                    # Check if we can access the chat history endpoint
+                    test_session_id = "test-session-id"
+                    history_response = requests.get(f"{API_BASE_URL}/chat/history/{test_session_id}")
+                    if history_response.status_code == 200:
+                        print("✅ Chat history endpoint is working")
+                    else:
+                        print(f"❌ Chat history endpoint failed with status code: {history_response.status_code}")
+                
+                # Mark the test as failed but continue with other tests
+                self.fail("AI Chat API test failed")
+                
+        except Exception as e:
+            print(f"❌ AI Chat API test failed with exception: {str(e)}")
+            self.fail(f"AI Chat API test failed with exception: {str(e)}")
     
     def test_mood_tracking_api(self):
         """Test the Mood Tracking API"""
