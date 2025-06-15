@@ -107,15 +107,18 @@ user_problem_statement: "Create a mental health resource web app providing menta
 backend:
   - task: "AI Mental Health Companion Chat API"
     implemented: true
-    working: "testing_needed"
+    working: false
     file: "/app/backend/server.py"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "testing_needed"
         agent: "main"
         comment: "Implemented GPT-4o integration with emergentintegrations library, mental health system prompt, chat persistence in MongoDB"
+      - working: false
+        agent: "testing"
+        comment: "API returns 500 error with message: 'Chat error: Failed to generate chat completion: litellm.AuthenticationError: AuthenticationError: OpenAIException - The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable'. The OPENAI_API_KEY is defined in backend/.env but not being properly loaded in the supervisor environment."
         
   - task: "Mood Tracking API"
     implemented: true
