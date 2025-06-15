@@ -351,51 +351,53 @@ function App() {
               <img 
                 src="https://images.unsplash.com/photo-1488345979593-09db0f85545f" 
                 alt="Person in peaceful water"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg"
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg border-4 border-white/30"
               />
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">How are you feeling today?</h2>
-              <p className="text-gray-600">Track your daily mood to identify patterns and celebrate progress</p>
+              <h2 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">How are you feeling today?</h2>
+              <p className="text-white/80 drop-shadow-md">Track your daily mood to identify patterns and celebrate progress</p>
             </div>
 
             {/* Mood Logger */}
-            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <h3 className="text-xl font-semibold mb-4">Log Today's Mood</h3>
+            <div className="glass-container p-6">
+              <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-lg">Log Today's Mood</h3>
               
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-white/90 mb-3">
                     Mood Level: {moodLevel}/10 {getMoodEmoji(moodLevel)}
                   </label>
-                  <input
-                    type="range"
-                    min="1"
-                    max="10"
-                    value={moodLevel}
-                    onChange={(e) => setMoodLevel(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                  />
-                  <div className="flex justify-between text-xs text-gray-500 mt-1">
-                    <span>Very Low</span>
-                    <span>Excellent</span>
+                  <div className="mood-slider-glass p-4">
+                    <input
+                      type="range"
+                      min="1"
+                      max="10"
+                      value={moodLevel}
+                      onChange={(e) => setMoodLevel(parseInt(e.target.value))}
+                      className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                    />
+                    <div className="flex justify-between text-xs text-white/70 mt-1">
+                      <span>Very Low</span>
+                      <span>Excellent</span>
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-white/90 mb-2">
                     Notes (Optional)
                   </label>
                   <textarea
                     value={moodNotes}
                     onChange={(e) => setMoodNotes(e.target.value)}
                     placeholder="What's influencing your mood today? Any thoughts or events you'd like to note..."
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full glass-input rounded-lg px-3 py-2"
                     rows="3"
                   />
                 </div>
 
                 <button
                   onClick={logMood}
-                  className="w-full bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white py-3 rounded-lg font-medium transition-all"
+                  className="w-full glass-button py-3 rounded-lg font-medium"
                 >
                   Log Mood Entry
                 </button>
@@ -403,28 +405,28 @@ function App() {
             </div>
 
             {/* Mood History */}
-            <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
-              <h3 className="text-xl font-semibold mb-4">Recent Mood History</h3>
+            <div className="glass-container p-6">
+              <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-lg">Recent Mood History</h3>
               
               {moodHistory.length === 0 ? (
-                <p className="text-gray-600 text-center py-8">No mood entries yet. Start logging to see your patterns!</p>
+                <p className="text-white/70 text-center py-8">No mood entries yet. Start logging to see your patterns!</p>
               ) : (
                 <div className="space-y-3">
                   {moodHistory.slice(0, 10).map((entry, index) => (
-                    <div key={entry.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={entry.id} className="flex items-center justify-between p-3 glass-pill rounded-lg">
                       <div className="flex items-center space-x-3">
                         <span className="text-2xl">{getMoodEmoji(entry.mood_level)}</span>
                         <div>
                           <div className="flex items-center space-x-2">
-                            <span className={`font-medium ${getMoodColor(entry.mood_level)}`}>
+                            <span className="font-medium text-white">
                               {entry.mood_level}/10
                             </span>
-                            <span className="text-sm text-gray-500">
+                            <span className="text-sm text-white/60">
                               {new Date(entry.timestamp).toLocaleDateString()}
                             </span>
                           </div>
                           {entry.notes && (
-                            <p className="text-sm text-gray-600 mt-1">{entry.notes}</p>
+                            <p className="text-sm text-white/80 mt-1">{entry.notes}</p>
                           )}
                         </div>
                       </div>
